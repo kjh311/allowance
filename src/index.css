@@ -5,14 +5,64 @@
 @layer base {
   body {
     @apply font-body bg-surface text-on-surface min-h-screen overflow-hidden;
+    /* Soft Paper Texture Background */
+    background-image: radial-gradient(rgba(5, 52, 92, 0.02) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+}
+
+@layer components {
+  /* Glassmorphism: Semi-transparent surfaces with high-end blur */
+  .glass {
+    @apply bg-white/60 backdrop-blur-xl dark:bg-slate-950/60;
+  }
+
+  /* Signature Texture Gradient: Primary to Primary-Container */
+  .signature-gradient {
+    @apply bg-gradient-to-br from-primary to-primary-container;
+  }
+
+  /* Ambient Shadow: Diffused, natural shadow using on-surface color */
+  .shadow-ambient {
+    box-shadow: 0 15px 40px -15px rgba(5, 52, 92, 0.08);
+  }
+
+  /* Ghost Border: 15% opacity outline-variant */
+  .ghost-border {
+    @apply border border-outline-variant/15;
+  }
+
+  /* Side Indicator: Rounded bar on the left edge of cards */
+  .side-indicator {
+    @apply absolute left-0 top-6 bottom-6 w-1.5 rounded-full;
   }
 }
 
 .material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
-/* Glassmorphism utility */
-.glass {
-  @apply bg-white/70 backdrop-blur-xl dark:bg-slate-950/70;
+/* Custom Typography Scales as per DESIGN.md and Screenshot */
+.display-lg {
+  @apply text-[2.75rem] font-extrabold tracking-tighter leading-none;
+}
+
+.headline-md {
+  @apply text-lg font-bold tracking-tight text-on-surface-variant;
+}
+
+.label-metadata {
+  @apply text-sm font-bold uppercase tracking-wider text-on-surface-variant/50;
 }
