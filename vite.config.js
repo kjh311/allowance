@@ -14,23 +14,13 @@ export default defineConfig({
         short_name: 'Allowance',
         description: 'Simple and organic allowance tracking for children',
         theme_color: '#006e3e',
-        background_color: '#f8f9ff',
+        background_color: '#000000',
         display: 'standalone',
         icons: [
           {
-            src: 'pwa-192x192.png',
-            sizes: '192x192',
-            type: 'image/png'
-          },
-          {
-            src: 'pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png'
-          },
-          {
-            src: 'pwa-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
+            src: 'icon.svg',
+            sizes: '192x192 512x512',
+            type: 'image/svg+xml',
             purpose: 'any maskable'
           }
         ]
