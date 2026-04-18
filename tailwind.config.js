@@ -1,0 +1,78 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        "surface-tint": "#006e3e",
+        "surface-container": "#e5eeff",
+        "surface-container-low": "#eff4ff",
+        "on-tertiary-container": "#00284e",
+        "on-secondary-fixed": "#7d151e",
+        "on-secondary": "#fff7f6",
+        "outline-variant": "#91b4e4",
+        "secondary-container": "#ffdad8",
+        "tertiary-fixed": "#64a8fe",
+        "error-container": "#fa746f",
+        "primary-dim": "#006035",
+        "error": "#a83836",
+        "on-error": "#fff7f6",
+        "on-primary-container": "#005f34",
+        "on-background": "#05345c",
+        "on-tertiary-fixed-variant": "#00315d",
+        "tertiary": "#0060ad",
+        "surface-dim": "#c4dcff",
+        "inverse-surface": "#000f21",
+        "secondary-fixed-dim": "#ffc7c4",
+        "primary": "#006e3e",
+        "surface": "#f8f9ff",
+        "surface-container-lowest": "#ffffff",
+        "error-dim": "#67040d",
+        "secondary": "#a9363a",
+        "background": "#f8f9ff",
+        "inverse-primary": "#92feb8",
+        "secondary-dim": "#992a2f",
+        "surface-variant": "#d2e4ff",
+        "on-surface": "#05345c",
+        "on-secondary-container": "#97292e",
+        "on-secondary-fixed-variant": "#a43337",
+        "on-primary": "#e7ffea",
+        "tertiary-container": "#64a8fe",
+        "primary-fixed": "#8df8b3",
+        "inverse-on-surface": "#8e9eb7",
+        "on-error-container": "#6e0a12",
+        "tertiary-fixed-dim": "#559bef",
+        "secondary-fixed": "#ffdad8",
+        "primary-container": "#8df8b3",
+        "primary-fixed-dim": "#7feaa6",
+        "tertiary-dim": "#005498",
+        "surface-container-high": "#dce9ff",
+        "on-tertiary-fixed": "#000613",
+        "on-tertiary": "#f8f8ff",
+        "on-primary-fixed": "#004a28",
+        "on-surface-variant": "#3d618c",
+        "surface-bright": "#f8f9ff",
+        "outline": "#5a7da9",
+        "on-primary-fixed-variant": "#006a3b",
+        "surface-container-highest": "#d2e4ff"
+      },
+      borderRadius: {
+        "DEFAULT": "1rem",
+        "lg": "2rem",
+        "xl": "3rem",
+        "full": "9999px"
+      },
+      fontFamily: {
+        "headline": ["Plus Jakarta Sans"],
+        "body": ["Plus Jakarta Sans"],
+        "label": ["Plus Jakarta Sans"]
+      }
+    },
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
+}
