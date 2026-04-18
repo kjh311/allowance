@@ -58,7 +58,7 @@ export default function App() {
       <header className="shrink-0 z-[60] bg-white border-b border-black/5">
         <div className="flex justify-between items-center w-full px-5 py-4">
           <div className="flex items-center gap-3">
-            <span className="material-symbols-outlined text-primary text-[24px] font-bold" style={{fontVariationSettings: "'FILL' 1"}}>account_balance_wallet</span>
+            <span className="material-symbols-outlined text-primary text-[24px] font-bold" style={{fontVariationSettings: "'FILL' 1"}}>payments</span>
             <h1 className="text-xl font-extrabold text-on-surface tracking-tighter">Allowance</h1>
           </div>
           
@@ -102,7 +102,7 @@ export default function App() {
             ))}
           </>
         ) : (
-          <SettingsView ledgers={ledgers} onSaved={fetchLedgers} />
+          <SettingsView ledgers={ledgers} onSaved={() => { fetchLedgers(); setActiveTab('overview'); }} />
         )}
       </main>
 
@@ -119,19 +119,20 @@ export default function App() {
 
 function LedgerCard({ ledger }) {
   const [spent, setSpent] = useState('')
-  const [isUpdating, setIsUpdating] = useState(false)
+  const [isQuickUpdating, setIsQuickUpdating] = useState(false)
+  const [isSpendUpdating, setIsSpendUpdating] = useState(false)
 
   const handleUpdate = async (type, useQuickAmount = false) => {
     let amount = 0
     
     if (useQuickAmount) {
       amount = ledger.increment_amount || 1.00
+      setIsQuickUpdating(true)
     } else {
       amount = parseFloat(spent) || 0
       if (amount <= 0) return
+      setIsSpendUpdating(true)
     }
-    
-    setIsUpdating(true)
     const newBalance = type === 'add' ? ledger.balance + amount : ledger.balance - amount
 
     try {
@@ -141,14 +142,15 @@ function LedgerCard({ ledger }) {
         .eq('id', ledger.id)
 
       if (error) throw error
-      setSpent('')
+      if (!useQuickAmount) setSpent('')
     } catch (e) {
       console.error('Update failed:', e.message)
       // Fallback for demo
       ledger.balance = newBalance
-      setSpent('')
+      if (!useQuickAmount) setSpent('')
     } finally {
-      setIsUpdating(false)
+      setIsQuickUpdating(false)
+      setIsSpendUpdating(false)
     }
   }
 
@@ -184,7 +186,7 @@ function LedgerCard({ ledger }) {
           </button>
           <button 
             onClick={() => handleUpdate('subtract', true)}
-            className="w-10 h-10 rounded-full bg-[#ffdad8] text-[#97292e] flex items-center justify-center shadow-sm active:scale-90 transition-transform"
+            className="w-10 h-10 rounded-full bg-red-500 text-white flex items-center justify-center shadow-md active:scale-90 transition-transform hover:bg-red-600"
           >
             <span className="material-symbols-outlined text-xl font-bold">remove</span>
           </button>
@@ -203,16 +205,16 @@ function LedgerCard({ ledger }) {
         </div>
         <button 
           onClick={() => handleUpdate('subtract', false)}
-          disabled={isUpdating || !spent}
+          disabled={isSpendUpdating || isQuickUpdating || !spent}
           className={cn(
-            "h-[40px] px-6 rounded-full font-bold text-[13px] transition-all flex items-center gap-2",
+            "h-[40px] px-6 rounded-full font-bold text-[13px] transition-all flex items-center justify-center gap-2 min-w-[100px]",
             ledger.name === 'Alexander' 
               ? "bg-[#d2e4ff] text-[#0060ad]" 
               : "bg-[#dce9ff] text-[#0060ad]",
             "disabled:opacity-40 disabled:pointer-events-none"
           )}
         >
-          {isUpdating ? '...' : 'Submit'}
+          {isSpendUpdating ? '...' : 'Submit'}
         </button>
       </div>
     </section>

@@ -10,9 +10,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-group.svg'],
       manifest: {
-        name: 'The Nurtured Ledger',
-        short_name: 'Nurtured Ledger',
-        description: 'Track children allowances with ease',
+        name: 'Allowance Tracking',
+        short_name: 'Allowance',
+        description: 'Simple and organic allowance tracking for children',
         theme_color: '#006e3e',
         background_color: '#f8f9ff',
         display: 'standalone',
