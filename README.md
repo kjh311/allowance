@@ -70,6 +70,7 @@ npm run dev
 - **Intentional Asymmetry**: Use offset elements (like the curved side indicators) to create an organic, premium feel.
 - **Material Symbols**: Integrated Google's Material Symbols Outlined for a professional, cohesive icon set.
 
+
 ## 🛠 Tech Stack
 - **Frontend**: React, Vite
 - **Styling**: Tailwind CSS
