@@ -163,7 +163,7 @@ function LedgerCard({ ledger }) {
 
       <div className="flex justify-between items-start pl-3">
         <div className="flex flex-col text-left">
-          <h2 className="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-1">
+          <h2 className="text-[13px] font-bold uppercase tracking-widest text-slate-400 mb-1">
             {ledger.name}
           </h2>
           <div className="flex items-baseline gap-2">
@@ -260,7 +260,7 @@ function SettingsView({ ledgers, onSaved }) {
       <div className="flex flex-col gap-3">
         {ledgers.map(ledger => (
           <div key={ledger.id} className="bg-white p-4 rounded-3xl border border-black/5 shadow-sm flex flex-col gap-3">
-            <h3 className="font-bold text-slate-700 text-sm flex items-center gap-2">
+            <h3 className="font-bold text-slate-700 text-[15px] flex items-center gap-2">
               <span className={cn(
                 "w-2 h-2 rounded-full",
                 ledger.color === 'tertiary' ? "bg-tertiary" : "bg-primary"
