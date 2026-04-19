@@ -7,6 +7,12 @@ function cn(...inputs) {
   return twMerge(clsx(inputs))
 }
 
+function triggerHaptic() {
+  if (navigator.vibrate) {
+    navigator.vibrate(15)
+  }
+}
+
 export default function App() {
   const [ledgers, setLedgers] = useState([])
   const [loading, setLoading] = useState(true)
@@ -179,13 +185,13 @@ function LedgerCard({ ledger }) {
         
         <div className="flex gap-2">
           <button 
-            onClick={() => handleUpdate('add', true)}
-            className="w-10 h-10 rounded-full bg-[#006e3e] text-white flex items-center justify-center shadow-md active:scale-90 transition-transform"
+            onClick={() => { triggerHaptic(); handleUpdate('add', true); }}
+            className="w-10 h-10 rounded-full bg-[#006e3e] text-white flex items-center justify-center shadow-md active:scale-90 transition-transform hover:bg-[#005a32]"
           >
             <span className="material-symbols-outlined text-xl font-bold">add</span>
           </button>
           <button 
-            onClick={() => handleUpdate('subtract', true)}
+            onClick={() => { triggerHaptic(); handleUpdate('subtract', true); }}
             className="w-10 h-10 rounded-full bg-red-500 text-white flex items-center justify-center shadow-md active:scale-90 transition-transform hover:bg-red-600"
           >
             <span className="material-symbols-outlined text-xl font-bold">remove</span>
